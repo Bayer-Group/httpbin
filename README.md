@@ -1,2 +1,2 @@
 # httpbin
-A simple docker container running Httpbin
+A simple docker container running [httpbin](https://github.com/kennethreitz/httpbin).
