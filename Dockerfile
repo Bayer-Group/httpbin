@@ -1,6 +1,8 @@
-FROM gliderlabs/alpine:3.1
+FROM alpine:3.6
 
-RUN apk add --update \
+RUN apk add --no-cache \
+    ca-certificates \
+    libffi-dev \
     python \
     python-dev \
     py-pip \
@@ -9,9 +11,10 @@ RUN apk add --update \
   && echo '#!/bin/sh' > run.sh \
   && echo 'gunicorn --bind=0.0.0.0:80 httpbin:app' >> run.sh \
   && chmod +x run.sh \
-  && rm -rf /var/cache/apk/* \
   && apk del python-dev \
-     build-base
+     build-base \
+     ca-certificates \ 
+     libffi-dev 
 
 EXPOSE 80
 
